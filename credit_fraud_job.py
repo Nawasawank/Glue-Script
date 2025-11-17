@@ -141,7 +141,7 @@ for obj in response.get('Contents', []):
     key = obj['Key']
     if re.match(r'.*part-.*\.csv', key):
         copy_source = {'Bucket': bucket, 'Key': key}
-        s3.copy_object(Bucket=bucket, CopySource=copy_source, Key='data_processing.csv')
+        s3.copy_object(Bucket=bucket, CopySource=copy_source, Key='data_cleaned.csv')
         s3.delete_object(Bucket=bucket, Key=key)
 
 job.commit()
